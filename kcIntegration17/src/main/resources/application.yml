@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: springboot-keycloak
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/SpringBootKeycloak
+          #chiave pubblica
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
+jwt:
+  auth:
+    converter:
+      #risorsa alla quale si vuole avere accesso
+      resource-id: springboot-keycloak-client
+      #attributo in jwt usato per identificare l'utente (il token)
+      #in questo caso jwt estrae il conenuto del campo preferred_username e lo usa come token
+      principal-attribute: preferred_username
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+server:
+ port: 8081
+ servlet:
+   context-path: /testkeycloak
