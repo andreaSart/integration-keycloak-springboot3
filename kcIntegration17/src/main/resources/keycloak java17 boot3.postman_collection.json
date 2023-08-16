@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "b6cbe858-1916-46d6-84c0-1837eb916a88",
+		"name": "keycloak java17 boot3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26241723"
+	},
+	"item": [
+		{
+			"name": "access token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "springboot-keycloak-client",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "user",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/realms/SpringBootKeycloak/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"realms",
+						"SpringBootKeycloak",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "anonymous call",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/testkeycloak/controller/anonymous",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"testkeycloak",
+						"controller",
+						"anonymous"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user call",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJtSGhCQUdkYVBJNWZyTzVtU0s2SURHbTY0d3FIWlFkcWFvTFdSNDZrQnpVIn0.eyJleHAiOjE2OTIyMjIxNDIsImlhdCI6MTY5MjIyMTg0MiwianRpIjoiZjM4NDE1NWItMTk0Mi00NDgxLTk0YzQtYzg5MDZmYjM4OGYyIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9TcHJpbmdCb290S2V5Y2xvYWsiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiYjAzODQzYmMtMWYxZC00YWZlLTkwOGUtNzFhMWY1OWI3MTkzIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoic3ByaW5nYm9vdC1rZXljbG9hay1jbGllbnQiLCJzZXNzaW9uX3N0YXRlIjoiNmJkYWZmMjMtZGI0NC00MjI0LWFmNjQtYjIzNGY5MGQzYjMyIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjgwODEiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtc3ByaW5nYm9vdGtleWNsb2FrIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInVzZXIiXX0sInJlc291cmNlX2FjY2VzcyI6eyJzcHJpbmdib290LWtleWNsb2FrLWNsaWVudCI6eyJyb2xlcyI6WyJ1c2VyQ2xpZW50Um9sZSJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwic2lkIjoiNmJkYWZmMjMtZGI0NC00MjI0LWFmNjQtYjIzNGY5MGQzYjMyIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ1c2VyIiwiZ2l2ZW5fbmFtZSI6IiIsImZhbWlseV9uYW1lIjoiIn0.gTFFntoX0h35OeD4lp939EdiGqSqBikf3GQpDa5Bk2mS9AxGNZz8YnIPNd0LHctGJQ6WBZbXpMP2RkCd7DtHzRUQB0YAIH1UcAqslB5NTwtQ6OYUXaNMxBATCW9MotuIqNu1tmNjlgljw_i0fVPI9Gcg_eCjBJFl1h-MxzVGlXuOQeQi14CSDWa0IkJi7GUEvkHGrnBDMWlynelIctyeUDYEpHbWjyJhT_LniIHXnJ-i-LnDkYe1rH0esQHW1b6GcZ9iiFkaKANjKcYFhNzNWSfOJRz08VzlaLZI9c_sexQpPC7FcEHRgDOEjU8fkiGnXONVMmgmGuc2VGT6nlkEuQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:8081/testkeycloak/test/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"testkeycloak",
+						"test",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin call",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/testkeycloak/controller/admin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"testkeycloak",
+						"controller",
+						"admin"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

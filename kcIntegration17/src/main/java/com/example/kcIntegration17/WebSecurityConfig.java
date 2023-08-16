@@ -35,17 +35,14 @@ public class WebSecurityConfig {
     		
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http
-        .authorizeHttpRequests(authorize -> authorize
-            .requestMatchers("/test/anonymous").permitAll()
-            .anyRequest().authenticated()
-        );
 		
-		http
-        .authorizeHttpRequests(authorize -> authorize
-            .requestMatchers("/test/user*").hasRole("ROLE_"+USER)
+		http.authorizeHttpRequests(authorize -> authorize
+            .requestMatchers("/test/anonymous").permitAll()
+            .requestMatchers("/test/user*").hasRole(USER)
+            .requestMatchers("/test/admin*").hasRole(ADMIN)
             .anyRequest().authenticated()
         )
+		
         .oauth2ResourceServer(oauth2 -> oauth2
             .jwt(jwt -> jwt
                 .jwtAuthenticationConverter(jwtAuthenticationConverter())
@@ -66,7 +63,7 @@ public class WebSecurityConfig {
 	    public Collection<GrantedAuthority> convert(Jwt jwt) {
 	        final Map<String, Object> realmAccess = (Map<String, Object>) jwt.getClaims().get("realm_access");
 	        return ((List<String>)realmAccess.get("roles")).stream()
-	                .map(roleName -> "ROLE_" + roleName) // prefix to map to a Spring Security "role"
+                    .map(roleName -> "ROLE_" + roleName) // prefix to map to a Spring Security "role"
 	                .map(SimpleGrantedAuthority::new)
 	                .collect(Collectors.toList());
 	    }
