@@ -7,13 +7,12 @@ import java.security.Principal;
 //import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/controller")
+@RequestMapping("/test")
 public class Controller {
 
 	
@@ -26,16 +25,12 @@ public class Controller {
 	@GetMapping("/user")
 //	@RolesAllowed("user")
 	public ResponseEntity<String> getUserUser(Principal principal) {
-		JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
-		Object user = token.getTokenAttributes().get("name");
 		return ResponseEntity.ok("Hello user" );
 	}
 	
 	@GetMapping("/admin")
 //	@RolesAllowed("user")
 	public ResponseEntity<String> getAdminUser(Principal principal) {
-		JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
-		Object user = token.getTokenAttributes().get("name");
 		return ResponseEntity.ok("Hello admin" );
 	}
 	
